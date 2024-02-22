@@ -33,7 +33,7 @@
 #' @seealso [goftest_BetaSBM()] performs the goodness-of-fit test for the beta-SBM, where the values of the chi-square test statistics are required
 #'
 #' @examples
-#'
+#'\donttest{
 #' RNGkind(sample.kind = "Rounding")
 #' set.seed(1729)
 #'
@@ -78,6 +78,7 @@
 #'
 #' # chi-square test statistic values
 #' graphchi_BetaSBM(G, class, p.hat)
+#' }
 
 graphchi_BetaSBM = function(G, C, p_mle) {
 

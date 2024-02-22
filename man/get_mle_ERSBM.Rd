@@ -19,7 +19,7 @@ A matrix of maximum likelihood estimates
 \code{get_mle_ERSBM} obtains MLE for the probability of edges between blocks in a graph, used in calculating the goodness-of-fit test statistic for the ERSBM (Karwa et al. (2023))
 }
 \examples{
-
+\donttest{
 RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
@@ -61,12 +61,13 @@ G = igraph::graph_from_adjacency_matrix(adjsymm, mode = "undirected", weighted =
 
 # mle of the edge probabilities
 get_mle_ERSBM(G, class)
+}
 
 }
 \references{
 Karwa et al. (2023). "Monte Carlo goodness-of-fit tests for degree corrected and related stochastic blockmodels",
 \emph{Journal of the Royal Statistical Society Series B: Statistical Methodology},
-\url{https://doi.org/10.1093/jrsssb/qkad084}
+\doi{https://doi.org/10.1093/jrsssb/qkad084}
 }
 \seealso{
 \code{\link[=goftest_ERSBM]{goftest_ERSBM()}} performs the goodness-of-fit test for the ERSBM, where the MLE of the edge probabilities are required

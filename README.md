@@ -55,7 +55,7 @@ al. (2023)](https://doi.org/10.1093/jrsssb/qkad084)) to model network
 data, `GoodfitSBM` addresses goodness-of-fit test under the framework of
 an **ER-SBM** and a **beta-SBM**. With a focus on *simple undirected*,
 and *unweighted* networks (graphs) having *no self-loop*, the package
-comprises of four functions viz., `get_mle_ERSBM()`,
+comprises of eight functions viz., `get_mle_ERSBM()`,
 `get_mle_BetaSBM()`, `goftest_ERSBM()`, `goftest_BetaSBM()`,
 `graphchi_ERSBM()`, `graphchi_BetaSBM()`, `sample_a_move_ERSBM()` and
 `sample_a_move_BetaSBM()` - among which `goftest_ERSBM()` and
@@ -261,11 +261,16 @@ library(remotes)
 remotes::install_github("Roy-SR-007/GoodFitSBM")
 ```
 
+    #> igraph (1.5.1 -> 2.0.2) [CRAN]
+    #> 
+    #>   There is a binary version available but the source version is later:
+    #>        binary source needs_compilation
+    #> igraph  1.5.1  2.0.2              TRUE
     #> 
     #> ── R CMD build ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-    #>      checking for file ‘/private/var/folders/ls/s91_zt990n9b6gdbr57m19900000gn/T/RtmppOWUMq/remotes558b10239607/Roy-SR-007-GoodFitSBM-c756be4/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ls/s91_zt990n9b6gdbr57m19900000gn/T/RtmppOWUMq/remotes558b10239607/Roy-SR-007-GoodFitSBM-c756be4/DESCRIPTION’
+    #>      checking for file ‘/private/var/folders/fl/v0fdr6k93ld57z45nn4f3jtw0000gn/T/RtmpEP5pWJ/remotesaba61efd649/Roy-SR-007-GoodFitSBM-f5d20fa/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/fl/v0fdr6k93ld57z45nn4f3jtw0000gn/T/RtmpEP5pWJ/remotesaba61efd649/Roy-SR-007-GoodFitSBM-f5d20fa/DESCRIPTION’
     #>   ─  preparing ‘GoodFitSBM’:
-    #>      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+    #>    checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
     #>   ─  checking for LF line-endings in source and make files and shell scripts
     #>   ─  checking for empty or unneeded directories
     #>   ─  building ‘GoodFitSBM_0.0.1.tar.gz’

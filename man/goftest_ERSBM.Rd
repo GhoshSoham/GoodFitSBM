@@ -24,7 +24,7 @@ A list with the elements
 \code{goftest_ERSBM} performs chi square goodness-of-fit test for network data considering the model as  ERSBM (Karwa et al. (2023))
 }
 \examples{
-
+\donttest{
 # Example 1
 
 RNGkind(sample.kind = "Rounding")
@@ -164,10 +164,11 @@ print(pvalue)
 hist(chi_sq_seq, 20, xlab = "chi-square test statistics", main = NULL)
 abline(v = chi_sq_seq[1], col = "red", lwd = 5) # adding test statistic on the observed network
 legend("topleft", legend = paste("observed GoF = ", chi_sq_seq[1]))
+}
 
 }
 \references{
 Karwa et al. (2023). "Monte Carlo goodness-of-fit tests for degree corrected and related stochastic blockmodels",
 \emph{Journal of the Royal Statistical Society Series B: Statistical Methodology},
-\url{https://doi.org/10.1093/jrsssb/qkad084}
+\doi{https://doi.org/10.1093/jrsssb/qkad084}
 }

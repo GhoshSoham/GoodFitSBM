@@ -34,7 +34,7 @@
 #' @seealso [goftest_BetaSBM()] performs the goodness-of-fit test for the beta-SBM, where the MLE of the edge probabilities are required
 #'
 #' @examples
-#'
+#' \donttest{
 #' RNGkind(sample.kind = "Rounding")
 #' set.seed(1729)
 #'
@@ -76,11 +76,11 @@
 #'
 #' # mle of the edge probabilities
 #' get_mle_BetaSBM(G, class)
-#'
+#'}
 #' @references
 #' Karwa et al. (2023). "Monte Carlo goodness-of-fit tests for degree corrected and related stochastic blockmodels",
 #' \emph{Journal of the Royal Statistical Society Series B: Statistical Methodology},
-#' <https://doi.org/10.1093/jrsssb/qkad084>
+#' \doi{https://doi.org/10.1093/jrsssb/qkad084}
 
 get_mle_BetaSBM = function(G, C) {
 

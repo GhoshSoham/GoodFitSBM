@@ -33,7 +33,7 @@
 #' @seealso [goftest_ERSBM()] performs the goodness-of-fit test for the ERSBM, where the values of the chi-square test statistics are required
 #'
 #' @examples
-#'
+#'\donttest{
 #' RNGkind(sample.kind = "Rounding")
 #' set.seed(1729)
 #'
@@ -78,6 +78,7 @@
 #'
 #' # chi-square test statistic values
 #' graphchi_ERSBM(G, class, p.hat)
+#' }
 
 graphchi_ERSBM <- function(G, C, p_mle) {
   # Input: G: igraph object which is an undirected graph and has no self loop

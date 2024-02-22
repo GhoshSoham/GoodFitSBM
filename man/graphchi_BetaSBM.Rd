@@ -21,7 +21,7 @@ A numeric value
 \code{graphchi_BetaSBM} obtains the value of the chi-square test statistic required for the goodness-of-fit of a beta-SBM (Karwa et al. (2023))
 }
 \examples{
-
+\donttest{
 RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
@@ -66,6 +66,7 @@ p.hat = get_mle_BetaSBM (G, class)
 
 # chi-square test statistic values
 graphchi_BetaSBM(G, class, p.hat)
+}
 }
 \seealso{
 \code{\link[=goftest_BetaSBM]{goftest_BetaSBM()}} performs the goodness-of-fit test for the beta-SBM, where the values of the chi-square test statistics are required

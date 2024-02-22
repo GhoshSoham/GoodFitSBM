@@ -41,7 +41,7 @@ Get.Move.beta.SBM = function(g, blocks, coin = c(1/2)) {
   # each block and a bipartite move between blocks.
   if(is.null(blocks)) {
 
-    print("Error: blocks parameter cannot be empty in Get.Move.beta.SBM.")
+    stop("Error: blocks parameter cannot be empty in Get.Move.beta.SBM.")
 
   }
 

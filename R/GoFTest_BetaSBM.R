@@ -37,7 +37,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' \donttest{
 #' # Example 1
 #'
 #' RNGkind(sample.kind = "Rounding")
@@ -178,11 +178,12 @@
 #' hist(chi_sq_seq, 20, xlab = "chi-square test statistics", main = NULL)
 #' abline(v = chi_sq_seq[1], col = "red", lwd = 5) # adding test statistic on the observed network
 #' legend("topleft", legend = paste("observed GoF = ", chi_sq_seq[1]))
+#'}
 #'
 #' @references
 #' Karwa et al. (2023). "Monte Carlo goodness-of-fit tests for degree corrected and related stochastic blockmodels",
 #' \emph{Journal of the Royal Statistical Society Series B: Statistical Methodology},
-#' <https://doi.org/10.1093/jrsssb/qkad084>
+#' \doi{https://doi.org/10.1093/jrsssb/qkad084}
 
 goftest_BetaSBM = function(A, K = NULL, C = NULL, numGraphs = 100) {
   # The true model is beta-SBM

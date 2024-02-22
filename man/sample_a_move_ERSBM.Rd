@@ -19,7 +19,7 @@ A graph
 \code{sample_a_move_ERSBM} to sample a graph in the same fiber; sampling according to the ERSBM (Karwa et al. (2023))
 }
 \examples{
-
+\donttest{
 RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
@@ -64,12 +64,12 @@ G_sample = sample_a_move_ERSBM(class, G)
 
 # plotting the sampled graph
 plot(G_sample, main = "The sampled graph after one Markov move for ERSBM")
-
+}
 }
 \references{
 Karwa et al. (2023). "Monte Carlo goodness-of-fit tests for degree corrected and related stochastic blockmodels",
 \emph{Journal of the Royal Statistical Society Series B: Statistical Methodology},
-\url{https://doi.org/10.1093/jrsssb/qkad084}
+\doi{https://doi.org/10.1093/jrsssb/qkad084}
 }
 \seealso{
 \code{\link[=goftest_ERSBM]{goftest_ERSBM()}} performs the goodness-of-fit test for the ERSBM, where graphs are being sampled
