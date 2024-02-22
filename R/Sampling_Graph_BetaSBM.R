@@ -35,14 +35,13 @@
 #' @seealso [goftest_BetaSBM()] performs the goodness-of-fit test for the beta-SBM, where graphs are being sampled
 #'
 #' @examples
-#'\donttest{
 #' RNGkind(sample.kind = "Rounding")
 #' set.seed(1729)
 #'
 #' # We model a network with 3 even classes
-#' n1 = 50
-#' n2 = 50
-#' n3 = 50
+#' n1 = 5
+#' n2 = 5
+#' n3 = 5
 #'
 #' # Generating block assignments for each of the nodes
 #' n = n1 + n2 + n3
@@ -52,9 +51,9 @@
 #' # Generate the matrix of connection probabilities
 #' cmat = matrix(
 #'   c(
-#'     30, 0.05, 0.05,
-#'     0.05, 30, 0.05,
-#'     0.05, 0.05, 30
+#'     10, 0.05, 0.05,
+#'     0.05, 10, 0.05,
+#'     0.05, 0.05, 10
 #'   ),
 #'   ncol = 3,
 #'   byrow = TRUE
@@ -80,7 +79,7 @@
 #'
 #' # plotting the sampled graph
 #' plot(G_sample, main = "The sampled graph after one Markov move for beta-SBM")
-#'}
+#'
 #' @references
 #' Karwa et al. (2023). "Monte Carlo goodness-of-fit tests for degree corrected and related stochastic blockmodels",
 #' \emph{Journal of the Royal Statistical Society Series B: Statistical Methodology},

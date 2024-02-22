@@ -153,7 +153,7 @@ library(GoodFitSBM)
 
 #### Example 1: Sampling a Graph using `sample_a_move_ERSBM()` and `sample_a_move_BetaSBM()`
 
-Here we consider sampling (Markov move) a graph (under the **ER-SBM** framework) with a total of $n=150$ nodes, with $k = 3$ blocks of sizes $50$ each.
+Here we consider sampling (Markov move) a graph (under the **ER-SBM** framework) with a total of $n=15$ nodes, with $k = 3$ blocks of sizes $5$ each.
 
 ```{r 2, warning = FALSE}
 library(igraph)
@@ -161,9 +161,9 @@ RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
 # We model a network with 3 even classes
-n1 = 50
-n2 = 50
-n3 = 50
+n1 = 5
+n2 = 5
+n3 = 5
 
 # Generating block assignments for each of the nodes
 n = n1 + n2 + n3
@@ -173,9 +173,9 @@ class = rep(c(1, 2, 3), c(n1, n2, n3))
 # Generate the matrix of connection probabilities
 cmat = matrix(
   c(
-    30, 0.05, 0.05,
-    0.05, 30, 0.05,
-    0.05, 0.05, 30
+    10, 0.05, 0.05,
+    0.05, 10, 0.05,
+    0.05, 0.05, 10
   ),
   ncol = 3,
   byrow = TRUE
@@ -206,7 +206,7 @@ G_sample = sample_a_move_ERSBM(class, G)
 plot(G_sample, main = "The sampled graph after one Markov move for ER-SBM")
 ```
 
-Once again, we consider sampling (Markov move) a graph (under the **beta-SBM** framework) with a total of $n=150$ nodes, with $k = 3$ blocks of sizes $50$ each.
+Once again, we consider sampling (Markov move) a graph (under the **beta-SBM** framework) with a total of $n=15$ nodes, with $k = 3$ blocks of sizes $5$ each.
 
 ```{r 2.1, warning = FALSE}
 library(igraph)
@@ -214,9 +214,9 @@ RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
 # We model a network with 3 even classes
-n1 = 50
-n2 = 50
-n3 = 50
+n1 = 5
+n2 = 5
+n3 = 5
 
 # Generating block assignments for each of the nodes
 n = n1 + n2 + n3
@@ -226,9 +226,9 @@ class = rep(c(1, 2, 3), c(n1, n2, n3))
 # Generate the matrix of connection probabilities
 cmat = matrix(
   c(
-    30, 0.05, 0.05,
-    0.05, 30, 0.05,
-    0.05, 0.05, 30
+    10, 0.05, 0.05,
+    0.05, 10, 0.05,
+    0.05, 0.05, 10
   ),
   ncol = 3,
   byrow = TRUE
@@ -315,7 +315,7 @@ get_mle_BetaSBM(G, class)
 
 #### Example 3: Computing the chi-square test statistic value using `graphchi_ERSBM()` and `graphchi_BetaSBM()`
 
-Computing the chi-square test statistic value for a network with a total of $n=9$ nodes, and $k=3$ blocks of size $3$ each - under the **ER-SBM** as well as **beta-SBM** framework.
+Computing the chi-square test statistic value for a network with a total of $n=6$ nodes, and $k=3$ blocks of size $2$ each - under the **ER-SBM** as well as **beta-SBM** framework.
 
 ```{r 4, warning = FALSE}
 library(igraph)
@@ -323,9 +323,9 @@ RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
 # We model a network with 3 even classes
-n1 = 50
-n2 = 50
-n3 = 50
+n1 = 2
+n2 = 2
+n3 = 2
 
 # Generating block assignments for each of the nodes
 n = n1 + n2 + n3
@@ -335,9 +335,9 @@ class = rep(c(1, 2, 3), c(n1, n2, n3))
 # Generate the matrix of connection probabilities
 cmat = matrix(
   c(
-    30, 0.5, 0.5,
-    0.5, 30, 0.5,
-    0.5, 0.5, 30
+    0.80, 0.5, 0.5,
+    0.5, 0.80, 0.5,
+    0.5, 0.5, 0.80
   ),
   ncol = 3,
   byrow = TRUE
@@ -373,7 +373,7 @@ graphchi_BetaSBM(G, class, p.hat.BetaSBM)
 
 #### Main Example: `goftest()_ERSBM` and `goftest_BetaSBM()` in action
 
-* **Instance 1**: Here we consider testing for the goodness-of-fit to the **ER-SBM** and **beta-SBM**, modeling a graph (network) with $k=3$ blocks of size $50$ each, and a total of $n=150$ nodes.
+* **Instance 1**: Here we consider testing for the goodness-of-fit to the **ER-SBM** and **beta-SBM**, modeling a graph (network) with $k=3$ blocks of size $10$ each, and a total of $n=30$ nodes.
 
 ```{r 5, warning = FALSE}
 library(igraph)
@@ -381,9 +381,9 @@ RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
 # We model a network with 3 even classes
-n1 = 50
-n2 = 50
-n3 = 50
+n1 = 10
+n2 = 10
+n3 = 10
 
 # Generating block assignments for each of the nodes
 n = n1 + n2 + n3
@@ -393,9 +393,9 @@ class = rep(c(1, 2, 3), c(n1, n2, n3))
 # Generate the matrix of connection probabilities
 cmat = matrix(
   c(
-    30, 0.05, 0.05,
-    0.05, 30, 0.05,
-    0.05, 0.05, 30
+    0.80, 0.05, 0.05,
+    0.05, 0.80, 0.05,
+    0.05, 0.05, 0.80
   ),
   ncol = 3,
   byrow = TRUE
@@ -441,7 +441,7 @@ legend("topleft", legend = paste("observed GoF_BetaSBM = ", chi_sq_seq.BetaSBM[1
 
 From the $p-$values obtained viz., $p_{\mbox{ER-SBM}}, p_{\mbox{beta-SBM}} >> \alpha = 0.05$, we fail to reject the null of a good fit of the given (observed) network to the ER-SBM and beta-SBM, at level $\alpha = 0.05$.
 
-* **Instance 2**: Here we consider testing for the goodness-of-fit to the **ER-SBM** and **beta-SBM**, modeling a graph (network) with $k=3$ blocks with sizes $30$, $20$, and $50$, i.e., with a total of $n=100$ nodes.
+* **Instance 2**: Here we consider testing for the goodness-of-fit to the **ER-SBM** and **beta-SBM**, modeling a graph (network) with $k=3$ blocks with sizes $10$, $20$, and $30$, i.e., with a total of $n=60$ nodes.
 
 ```{r 6, warning = FALSE}
 library(igraph)
@@ -449,9 +449,9 @@ RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
 # We model a network with 3 even classes
-n1 = 30
+n1 = 10
 n2 = 20
-n3 = 50
+n3 = 30
 
 # Generating block assignments for each of the nodes
 n = n1 + n2 + n3
@@ -461,9 +461,9 @@ class = rep(c(1, 2, 3), c(n1, n2, n3))
 # Generate the matrix of connection probabilities
 cmat = matrix(
   c(
-    30, 0.05, 0.05,
-    0.05, 30, 0.05,
-    0.05, 0.05, 30
+    0.50, 0.05, 0.05,
+    0.05, 0.50, 0.05,
+    0.05, 0.05, 0.50
   ),
   ncol = 3,
   byrow = TRUE
@@ -507,7 +507,7 @@ abline(v = chi_sq_seq.BetaSBM[1], col = "red", lwd = 5)
 legend("topleft", legend = paste("observed GoF_BetaSBM = ", chi_sq_seq.BetaSBM[1]))
 ```
 
-Observe that, the $p-$value obtained in case of the ER-SBM is muh higher than $\alpha=0.05$, hence we fail to the reject the null of a good fit of the given (observed) network to the ER-SBM, at level $\alpha = 0.05$. Whereas, in case of the beta-SBM, the $p-$value is nominally smaller than $\alpha=0.05$, i.e., we weakly reject the null of a good fit of the given (observed) network to the beta-SBM.
+Observe that, the $p-$value obtained in case of the ER-SBM is much higher than $\alpha=0.05$, hence we fail to the reject the null of a good fit of the given (observed) network to the ER-SBM, at level $\alpha = 0.05$. In case of the beta-SBM, the $p-$value is also higher than $\alpha=0.05$, i.e., we fail to reject the null of a good fit of the given (observed) network to the beta-SBM.
 
 #### Application to Real Datasets: Zachary's Karate Club Data
 

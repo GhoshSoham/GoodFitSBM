@@ -33,14 +33,13 @@
 #' @seealso [goftest_ERSBM()] performs the goodness-of-fit test for the ERSBM, where the values of the chi-square test statistics are required
 #'
 #' @examples
-#'\donttest{
 #' RNGkind(sample.kind = "Rounding")
 #' set.seed(1729)
 #'
 #' # We model a network with 3 even classes
-#' n1 = 50
-#' n2 = 50
-#' n3 = 50
+#' n1 = 2
+#' n2 = 2
+#' n3 = 2
 #'
 #' # Generating block assignments for each of the nodes
 #' n = n1 + n2 + n3
@@ -50,9 +49,9 @@
 #' # Generate the matrix of connection probabilities
 #' cmat = matrix(
 #'   c(
-#'     30, 0.05, 0.05,
-#'     0.05, 30, 0.05,
-#'     0.05, 0.05, 30
+#'     0.8, 0.5, 0.5,
+#'     0.5, 0.8, 0.5,
+#'     0.5, 0.5, 0.8
 #'   ),
 #'   ncol = 3,
 #'   byrow = TRUE
@@ -78,7 +77,6 @@
 #'
 #' # chi-square test statistic values
 #' graphchi_ERSBM(G, class, p.hat)
-#' }
 
 graphchi_ERSBM <- function(G, C, p_mle) {
   # Input: G: igraph object which is an undirected graph and has no self loop

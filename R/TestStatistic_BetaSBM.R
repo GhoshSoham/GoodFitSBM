@@ -33,14 +33,13 @@
 #' @seealso [goftest_BetaSBM()] performs the goodness-of-fit test for the beta-SBM, where the values of the chi-square test statistics are required
 #'
 #' @examples
-#'\donttest{
 #' RNGkind(sample.kind = "Rounding")
 #' set.seed(1729)
 #'
 #' # We model a network with 3 even classes
-#' n1 = 50
-#' n2 = 50
-#' n3 = 50
+#' n1 = 2
+#' n2 = 2
+#' n3 = 2
 #'
 #' # Generating block assignments for each of the nodes
 #' n = n1 + n2 + n3
@@ -50,9 +49,9 @@
 #' # Generate the matrix of connection probabilities
 #' cmat = matrix(
 #'   c(
-#'     30, 0.05, 0.05,
-#'     0.05, 30, 0.05,
-#'     0.05, 0.05, 30
+#'     0.80, 0.5, 0.5,
+#'     0.5, 0.80, 0.5,
+#'     0.5, 0.5, 0.80
 #'   ),
 #'   ncol = 3,
 #'   byrow = TRUE
@@ -78,7 +77,6 @@
 #'
 #' # chi-square test statistic values
 #' graphchi_BetaSBM(G, class, p.hat)
-#' }
 
 graphchi_BetaSBM = function(G, C, p_mle) {
 

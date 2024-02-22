@@ -34,14 +34,13 @@
 #' @seealso [goftest_ERSBM()] performs the goodness-of-fit test for the ERSBM, where the MLE of the edge probabilities are required
 #'
 #' @examples
-#' \donttest{
 #' RNGkind(sample.kind = "Rounding")
 #' set.seed(1729)
 #'
 #' # We model a network with 3 even classes
-#' n1 = 50
-#' n2 = 50
-#' n3 = 50
+#' n1 = 2
+#' n2 = 2
+#' n3 = 2
 #'
 #' # Generating block assignments for each of the nodes
 #' n = n1 + n2 + n3
@@ -51,9 +50,9 @@
 #' # Generate the matrix of connection probabilities
 #' cmat = matrix(
 #'   c(
-#'     30, 0.05, 0.05,
-#'     0.05, 30, 0.05,
-#'     0.05, 0.05, 30
+#'     0.80, 0.05, 0.05,
+#'     0.05, 0.80, 0.05,
+#'     0.05, 0.05, 0.80
 #'   ),
 #'   ncol = 3,
 #'   byrow = TRUE
@@ -76,7 +75,6 @@
 #'
 #' # mle of the edge probabilities
 #' get_mle_ERSBM(G, class)
-#'}
 #'
 #' @references
 #' Karwa et al. (2023). "Monte Carlo goodness-of-fit tests for degree corrected and related stochastic blockmodels",

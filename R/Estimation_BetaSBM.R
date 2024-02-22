@@ -34,56 +34,54 @@
 #' @seealso [goftest_BetaSBM()] performs the goodness-of-fit test for the beta-SBM, where the MLE of the edge probabilities are required
 #'
 #' @examples
-#' \donttest{
 #' RNGkind(sample.kind = "Rounding")
 #' set.seed(1729)
 #'
 #' # We model a network with 3 even classes
-#' n1 = 50
-#' n2 = 50
-#' n3 = 50
+#' n1 <- 2
+#' n2 <- 2
+#' n3 <- 2
 #'
 #' # Generating block assignments for each of the nodes
-#' n = n1 + n2 + n3
-#' class = rep(c(1, 2, 3), c(n1, n2, n3))
+#' n <- n1 + n2 + n3
+#' class <- rep(c(1, 2, 3), c(n1, n2, n3))
 #'
 #' # Generating the adjacency matrix of the network
 #' # Generate the matrix of connection probabilities
-#' cmat = matrix(
+#' cmat <- matrix(
 #'   c(
-#'     30, 0.05, 0.05,
-#'     0.05, 30, 0.05,
-#'     0.05, 0.05, 30
+#'     0.80, 0.50, 0.50,
+#'     0.50, 0.80, 0.50,
+#'     0.50, 0.50, 0.80
 #'   ),
 #'   ncol = 3,
 #'   byrow = TRUE
 #' )
-#' pmat = cmat / n
+#' pmat <- cmat / n
 #'
 #' # Creating the n x n adjacency matrix
 #' adj <- matrix(0, n, n)
 #' for (i in 2:n) {
 #'   for (j in 1:(i - 1)) {
-#'     p = pmat[class[i], class[j]] # We find the probability of connection with the weights
-#'     adj[i, j] = rbinom(1, 1, p) # We include the edge with probability p
+#'     p <- pmat[class[i], class[j]] # We find the probability of connection with the weights
+#'     adj[i, j] <- rbinom(1, 1, p) # We include the edge with probability p
 #'   }
 #' }
 #'
-#' adjsymm = adj + t(adj)
+#' adjsymm <- adj + t(adj)
 #'
 #' # graph from the adjacency matrix
-#' G = igraph::graph_from_adjacency_matrix(adjsymm, mode = "undirected", weighted = NULL)
+#' G <- igraph::graph_from_adjacency_matrix(adjsymm, mode = "undirected", weighted = NULL)
 #'
 #' # mle of the edge probabilities
 #' get_mle_BetaSBM(G, class)
-#'}
+#'
 #' @references
 #' Karwa et al. (2023). "Monte Carlo goodness-of-fit tests for degree corrected and related stochastic blockmodels",
 #' \emph{Journal of the Royal Statistical Society Series B: Statistical Methodology},
 #' \doi{https://doi.org/10.1093/jrsssb/qkad084}
 
-get_mle_BetaSBM = function(G, C) {
-
+get_mle_BetaSBM <- function(G, C) {
   # get_mle_BetaSBM
 
   # underlying model: beta-SBM
@@ -98,36 +96,29 @@ get_mle_BetaSBM = function(G, C) {
   # A MLE matrix with the MLE of the probability of edges between pairs of blocks
 
   # collapse to k*k
-  k = length(unique(C)) # no. of blocks
-  n = length(C) # no. of nodes
-  edges = igraph::get.edgelist(G) # edges of the graph G
-  A = igraph::get.adjacency(G , type = "both") # adjacency matrix
+  k <- length(unique(C)) # no. of blocks
+  n <- length(C) # no. of nodes
+  edges <- igraph::get.edgelist(G) # edges of the graph G
+  A <- igraph::get.adjacency(G, type = "both") # adjacency matrix
 
 
-  table_slice = array(0, c(n, n, k))
-  start_table = array(0, c(n, n, k))
+  table_slice <- array(0, c(n, n, k))
+  start_table <- array(0, c(n, n, k))
 
-  for(idyad in 1:k) {
-
-    table_slice[ , , idyad] = as.matrix(A * ((C == idyad) %*% t(rep(1, n))))
-    start_table[ , , idyad] = ((C == idyad) %*% t(rep(1, n)))
-
+  for (idyad in 1:k) {
+    table_slice[, , idyad] <- as.matrix(A * ((C == idyad) %*% t(rep(1, n))))
+    start_table[, , idyad] <- ((C == idyad) %*% t(rep(1, n)))
   }
 
-  fm = stats::loglin(table_slice, list(c(3)), fit=TRUE, start = start_table) # log-linear model for the cell-probabilities
-  largemle = fm$fit
+  fm <- stats::loglin(table_slice, list(c(3)), fit = TRUE, start = start_table) # log-linear model for the cell-probabilities
+  largemle <- fm$fit
 
-  mleMatr = matrix(0, nrow = n, ncol = n)
-  for(i in 1:n) {
-
-    for(j in 1:n) {
-
-      mleMatr[i, j] = max(sum(largemle[i, j, ]), sum(largemle[j, i, ]))
-
+  mleMatr <- matrix(0, nrow = n, ncol = n)
+  for (i in 1:n) {
+    for (j in 1:n) {
+      mleMatr[i, j] <- max(sum(largemle[i, j, ]), sum(largemle[j, i, ]))
     }
-
   }
 
   return(mleMatr)
-
 }
