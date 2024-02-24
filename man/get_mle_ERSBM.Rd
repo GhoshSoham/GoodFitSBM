@@ -19,14 +19,13 @@ A matrix of maximum likelihood estimates
 \code{get_mle_ERSBM} obtains MLE for the probability of edges between blocks in a graph, used in calculating the goodness-of-fit test statistic for the ERSBM (Karwa et al. (2023))
 }
 \examples{
-\donttest{
 RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
 # We model a network with 3 even classes
-n1 = 50
-n2 = 50
-n3 = 50
+n1 = 2
+n2 = 2
+n3 = 2
 
 # Generating block assignments for each of the nodes
 n = n1 + n2 + n3
@@ -36,9 +35,9 @@ class = rep(c(1, 2, 3), c(n1, n2, n3))
 # Generate the matrix of connection probabilities
 cmat = matrix(
   c(
-    30, 0.05, 0.05,
-    0.05, 30, 0.05,
-    0.05, 0.05, 30
+    0.80, 0.05, 0.05,
+    0.05, 0.80, 0.05,
+    0.05, 0.05, 0.80
   ),
   ncol = 3,
   byrow = TRUE
@@ -61,7 +60,6 @@ G = igraph::graph_from_adjacency_matrix(adjsymm, mode = "undirected", weighted =
 
 # mle of the edge probabilities
 get_mle_ERSBM(G, class)
-}
 
 }
 \references{

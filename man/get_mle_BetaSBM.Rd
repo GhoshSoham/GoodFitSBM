@@ -19,49 +19,48 @@ A matrix of maximum likelihood estimates
 \code{get_mle_BetaSBM} obtains MLE for the probability of edges between blocks in a graph, used in calculating the goodness-of-fit test statistic for the beta-SBM (Karwa et al. (2023))
 }
 \examples{
-\donttest{
 RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
 # We model a network with 3 even classes
-n1 = 50
-n2 = 50
-n3 = 50
+n1 <- 2
+n2 <- 2
+n3 <- 2
 
 # Generating block assignments for each of the nodes
-n = n1 + n2 + n3
-class = rep(c(1, 2, 3), c(n1, n2, n3))
+n <- n1 + n2 + n3
+class <- rep(c(1, 2, 3), c(n1, n2, n3))
 
 # Generating the adjacency matrix of the network
 # Generate the matrix of connection probabilities
-cmat = matrix(
+cmat <- matrix(
   c(
-    30, 0.05, 0.05,
-    0.05, 30, 0.05,
-    0.05, 0.05, 30
+    0.80, 0.50, 0.50,
+    0.50, 0.80, 0.50,
+    0.50, 0.50, 0.80
   ),
   ncol = 3,
   byrow = TRUE
 )
-pmat = cmat / n
+pmat <- cmat / n
 
 # Creating the n x n adjacency matrix
 adj <- matrix(0, n, n)
 for (i in 2:n) {
   for (j in 1:(i - 1)) {
-    p = pmat[class[i], class[j]] # We find the probability of connection with the weights
-    adj[i, j] = rbinom(1, 1, p) # We include the edge with probability p
+    p <- pmat[class[i], class[j]] # We find the probability of connection with the weights
+    adj[i, j] <- rbinom(1, 1, p) # We include the edge with probability p
   }
 }
 
-adjsymm = adj + t(adj)
+adjsymm <- adj + t(adj)
 
 # graph from the adjacency matrix
-G = igraph::graph_from_adjacency_matrix(adjsymm, mode = "undirected", weighted = NULL)
+G <- igraph::graph_from_adjacency_matrix(adjsymm, mode = "undirected", weighted = NULL)
 
 # mle of the edge probabilities
 get_mle_BetaSBM(G, class)
-}
+
 }
 \references{
 Karwa et al. (2023). "Monte Carlo goodness-of-fit tests for degree corrected and related stochastic blockmodels",

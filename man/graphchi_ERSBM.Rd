@@ -21,14 +21,13 @@ A numeric value
 \code{graphchi_ERSBM} obtains the value of the chi-square test statistic required for the goodness-of-fit of a ERSBM (Karwa et al. (2023))
 }
 \examples{
-\donttest{
 RNGkind(sample.kind = "Rounding")
 set.seed(1729)
 
 # We model a network with 3 even classes
-n1 = 50
-n2 = 50
-n3 = 50
+n1 = 2
+n2 = 2
+n3 = 2
 
 # Generating block assignments for each of the nodes
 n = n1 + n2 + n3
@@ -38,9 +37,9 @@ class = rep(c(1, 2, 3), c(n1, n2, n3))
 # Generate the matrix of connection probabilities
 cmat = matrix(
   c(
-    30, 0.05, 0.05,
-    0.05, 30, 0.05,
-    0.05, 0.05, 30
+    0.8, 0.5, 0.5,
+    0.5, 0.8, 0.5,
+    0.5, 0.5, 0.8
   ),
   ncol = 3,
   byrow = TRUE
@@ -66,7 +65,6 @@ p.hat = get_mle_ERSBM(G, class)
 
 # chi-square test statistic values
 graphchi_ERSBM(G, class, p.hat)
-}
 }
 \seealso{
 \code{\link[=goftest_ERSBM]{goftest_ERSBM()}} performs the goodness-of-fit test for the ERSBM, where the values of the chi-square test statistics are required
